@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Rubik&display=swap');
+
+body{
+    overflow-y: hidden;
+}
+
+
+.homeText{
+    font-family: "Rubik";
+    font-weight: 400;
+    font-size: 80px;
+    display: inline-block;
+    width: 25vw;
+    margin-top: 30vh;
+    margin-left: 5vw;
+    z-index: 1;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.panel{
+    display: inline-block;
+}

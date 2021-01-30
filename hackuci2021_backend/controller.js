@@ -5,9 +5,9 @@ var path = require("path");
 
 dotenv.config({ path: "./config.env" });
 
-var client_id = '1377abd68c3b43acb371df5161a0e126'; // Your client id
-var client_secret = '2b27e7c05aa44ad295e63234abe272be'; // Your secret
-var redirect_uri = process.env.REDIRECT_URI || "http://localhost:8080/callback" // Your redirect ur
+var client_id = process.env.CLIENT_ID; // Client id
+var client_secret = process.env.CLIENT_SECRET; // Client secret id
+var redirect_uri = process.env.REDIRECT_URI || "http://localhost:8080/callback" // Redirect ur
 
 var scopes = 'user-read-private user-read-email'
 

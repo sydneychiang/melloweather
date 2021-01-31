@@ -3,7 +3,7 @@
 
 .fullPanel{
     background-color: #99C9C2;
-    height: 68vh;
+    height: 100vh;
     border: none;
     font-family: "Karla";
     font-weight: 400;
@@ -15,7 +15,7 @@
     position: absolute;
     z-index: 1;
     right: 0;
-    padding-top: 32vh;
+    padding-top: 29vh;
     box-shadow: -6px 0px 9px rgba(0,0,0,0.15);
     /* transition: color 1s ease-in-out; */
 
@@ -27,10 +27,19 @@
 }
 
 
-.link{
+.link, #login{
     margin-top: 5vh;
     margin-bottom: 5vh;
     display: block;
     text-decoration: none;
     color: black;
+
+    
+}
+
+#login{
+    /* width: 100%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display:block; */
 }

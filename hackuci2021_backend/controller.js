@@ -298,7 +298,7 @@ exports.getWeather = async (req, res, next) => {
 
   if (weather_state == "Thunderstorm") {
     min_valence = 0.2;
-    min_valence = 0.5
+    max_valence = 0.5
   }
 
   if (weather_state == "Clear") {
@@ -332,6 +332,8 @@ exports.getWeather = async (req, res, next) => {
     max_valence = 1.0;
   }
   
+  console.log(location, weather_state, temp, time, country, region_code, min_valence, max_valence)
+
   res.status(200).json({
     "location": location,
     "weather": weather_state,

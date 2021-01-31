@@ -4,10 +4,10 @@ import SearchBar from '../Components/SearchBar.js';
 import React, {Component} from "react";
 import { motion } from 'framer-motion'
 import MapComponent from '../Components/MapComponent.js';
-import AutocompleteMaps from '../Components/AutocompleteMaps.js';
-import PlacesAutocomplete, {
-  getLatLng
-} from "react-places-autocomplete";
+// import AutocompleteMaps from '../Components/AutocompleteMaps.js';
+// import PlacesAutocomplete, {
+//   getLatLng
+// } from "react-places-autocomplete";
 
 
 class EnterLocation extends Component {
@@ -49,7 +49,7 @@ class EnterLocation extends Component {
         )}
       </PlacesAutocomplete> */}
       <MapComponent />
-      <AutocompleteMaps />
+      {/* <AutocompleteMaps /> */}
 
     </motion.div>
 

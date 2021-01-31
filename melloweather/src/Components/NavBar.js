@@ -8,8 +8,8 @@ class NavBar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      loginurl: "http://localhost:8080/login",
-      logouturl: "http://localhost:8080/login",
+      // loginurl: "http://localhost:8080/login",
+      // logouturl: "http://localhost:8080/logout",
     }
   }
   componentDidMount() {
@@ -22,14 +22,18 @@ class NavBar extends Component {
   render() {
     return (
       <div className="NavBar">
+
         <Link to="/"><img src={logo} className="logoImg"></img></Link>
         <Link id="nav" className="title" to="/">melloweather</Link>
 
+
         {/* <Link id="signIn" to="/login">Sign In</Link>   */}
-        
-        <a id="login" href={this.state.loginurl}>Sign In</a>
-        <a id="logout" href={this.state.logouturl}>Sign Out</a>
+
+
+        {/* <a id="logout" href={this.state.logouturl}>Sign Out</a> */}
  
+
+
       </div>
     );
   }

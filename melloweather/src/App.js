@@ -19,26 +19,51 @@ import Results from "./Pages/Results";
 import NavBar from './Components/NavBar';
 import { AnimatePresence } from 'framer-motion'
 
-function App({ data, sendDataToParent}){
-    
-  var location = useLocation();
-  var [user, setUser] = React.useState({Temp:'',Time:'',Playlist:'',userLocation:'',Temp:'',});
-
-  function changeStatusInfo(e) {
-    setUser({...user, [e.target.name]:e.target.value})
+function withMyHook(Component) {
+  return function WrappedComponet(props) {
+    const myHookValue = useLocation();
+    return <Component{...props} myHookValue={myHookValue} />;
   }
-  
+}
+
+class App extends Component{
+    
+  constructor(props) {
+    super(props)
+    this.state = {
+      temp: "77",
+      time: "00:00",
+      playlist: "",
+      status: "wet",
+      userLocation: "",
+
+    }
+    
+  }
+
+  handleCallback = (childData) => {
+    console.log(childData);
+    this.playlist = childData["playlist_id"];
+    this.temp = childData["temperature"]
+    this.status = childData["weather_state"]
+    this.time = childData["time"]
+    this.userLocation = childData["location"]
+    console.log(this.playlist)
+  }
+
+  render(){
+  const location = this.props.myHookValue;
   return (
     <>
     <NavBar />
     <AnimatePresence exitBeforeEnter>
       <Switch location= {location} key={location.key}>
         <Route exact path="/"> <Home/> </Route>
-        <Route exact path="/userLocation"> <CurrentLocation/> </Route>
+        <Route exact path="/userLocation"> <CurrentLocation parentCallback = {this.handleCallback}/> </Route>
         <Route exact path="/enterLocation"> <EnterLocation/> </Route>
-        <Route exact path="/surpriseMe"> <SurpriseMe/></Route>
+        <Route exact path="/surpriseMe"> <SurpriseMe parentCallback = {this.handleCallback} /></Route>
         <Route exact path="/results"> 
-          <Results userLocation={user.UserLocation} temp={user.Temp} time={user.Time} playlist={user.Playlist} status={user.Status}/> 
+          <Results userLocation={this.userLocation} temp={this.temp} time={this.time} playlist={this.playlist} status={this.status}/> 
         </Route>
 
 
@@ -49,9 +74,10 @@ function App({ data, sendDataToParent}){
     </AnimatePresence>
     </>
   )
+  }
 }
 
-export default App;
+export default withMyHook(App);
 
 
 

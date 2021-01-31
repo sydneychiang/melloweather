@@ -10,23 +10,45 @@ import { motion } from 'framer-motion'
 class CurrentLocation extends Component{
     constructor(props){
         super(props);
-        this.state = {data: ""};
+        this.state = {data: null, url: ""};
     }
-    componentDidMount(){
+
+    onTrigger = (event) => {
+        console.log("this.data")
+        this.props.parentCallback(this.data);
+        
+        event.preventDefault();
+      }
+
+    getCoordinates() {
+        return new Promise(function(resolve, reject) {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+    }
+
+    async componentDidMount(){
         var navbar = document.getElementById("nav");
         navbar.style.color = "black";
-        navigator.geolocation.getCurrentPosition(function(position){
-            console.log("Latitude is : ", position.coords.latitude);
-            console.log("Longitude is : ", position.coords.longitude);
+        var url = "";
+        url = await this.getCoordinates().then(position => {
+            let url = "http://localhost:8080/getPlaylist?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+            // Reverse geocoding using OpenStreetMap
+            return url;
+        });
+        //     console.log("Latitude is : ", position.coords.latitude);
+        //     console.log("Longitude is : ", position.coords.longitude);
 
             
-            const url = "http://localhost:8080/getWeather?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude
-            console.log(url)
-            Axios.get(url)
-                .then(res => {
-                const data = res.data;
-                console.log(data)
-                })
+        //     url = "http://localhost:8080/getWeather?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+            
+        // })
+
+        console.log(url)
+
+        Axios.get(url)
+            .then(res => {
+            console.log(res.data);
+            this.data = res.data;
         })
     }
     render(){
@@ -48,6 +70,7 @@ class CurrentLocation extends Component{
             transition = {{ duration: 1}}
             exit= {{y: '-100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 1, opacity: 0}}}
             >
+                <button onClick={this.onTrigger}>Click Me First</button>
                 <Link className="resultsBtn" to="/results">Generate Playlist! </Link>
             </motion.div>
         </motion.div>

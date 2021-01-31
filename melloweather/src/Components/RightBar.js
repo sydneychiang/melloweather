@@ -28,6 +28,7 @@ function RightBar() {
     exit="exit"
   >
         <motion.div className="textPanel">
+            <a id="login" href="http://localhost:8080/login">Log in</a>
             <Link className="link" to="/enterLocation">Enter Location</Link>
             <Link className="link" to="/userLocation">Current Location</Link>
             <Link className="link" to="/surpriseMe">Surprise Me</Link>

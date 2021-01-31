@@ -9,14 +9,18 @@ import Axios from 'axios';
 class SurpriseMe extends Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {
+      data: null
+    };
   } 
 
-   passData = (e) => {
-     e.preventDefault();
-     this.props.functionCallFromParent("Hello from Surprise Me");
-
-   }
+  onTrigger = (event) => {
+    console.log("this.data")
+    this.props.parentCallback(this.data);
+    
+    event.preventDefault();
+  }
+   
 
   componentDidMount (){
     var lat = Math.random() * 180 - 90
@@ -27,6 +31,7 @@ class SurpriseMe extends Component {
     Axios.get(url).then(res => {
       const data = res.data;
       console.log(data)
+      this.data = data
     })
   }
   render(){
@@ -49,7 +54,8 @@ class SurpriseMe extends Component {
       transition = {{ duration: 1}}
       exit= {{x: '-100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 1, opacity: 0}}}
     >
-        <Link className="resultsBtn" to="/results" onClick={this.passData.bind(this)}>Generate Playlist! </Link>
+        <button onClick={this.onTrigger}>Click Me First</button>
+        <Link className="resultsBtn" to="/results">Generate Playlist! </Link>
         </motion.div>
     </motion.div>
 

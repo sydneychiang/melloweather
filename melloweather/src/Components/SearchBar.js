@@ -7,6 +7,8 @@ import { motion } from 'framer-motion'
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import React, {Component} from "react";
 import axios from 'axios';
+// const dotenv = require("dotenv");
+// dotenv.config({ path: "../config.env" });
 
 
 class SearchBar extends Component {
@@ -28,41 +30,51 @@ class SearchBar extends Component {
     geocodeLocation(city, country){
         var queryCity = city.replace(" ", "+");
         var queryCountry= country.replace(" ", "+");
+        var resultsBtn = document.getElementById("btnDiv");
+        resultsBtn.onclick = this.geocodeLocation("Los Angeles", "California");
 
-        var linkStr ="https://api.opencagedata.com/geocode/v1/json?q=" + queryCity +"," +queryCountry + "&key=2551ef41f38046fcb56ab8ba401db382";
+        var linkStr ="https://api.opencagedata.com/geocode/v1/json?q=" + queryCity +"," +queryCountry + "&key=" +"2551ef41f38046fcb56ab8ba401db382"; //REPLACE LATER
         
+        axios.get(linkStr).then(res => {
+            // const data = res.data;
+            this.state.response = res.data;
+            console.log(this.state.response)
+          })
+
+        //   this.geocodeLocation("Los Angeles", "California")
         // let response;
-        const getData = async (link=linkStr) => {
-            // setLoading(true)
-            // let response;
-            try {
-                this.state.response = await axios.get(link);
-                console.log(this.state.response);
+        // const getData = async (link=linkStr) => {
+        //     // setLoading(true)
+        //     // let response;
+        //     try {
+        //         this.state.response = await axios.get(link);
+        //         console.log(this.state.response);
     
-                // setData([...data, response.data]);
+        //         // setData([...data, response.data]);
                 
-            } catch(err) {
-                console.log(err)
-            }
-            // setLoading(false)
-        }
-        getData(linkStr);
+        //     } catch(err) {
+        //         console.log(err)
+        //     }
+        //     // setLoading(false)
+        // }
+        // getData(linkStr);
         // console.log("here", getData(linkStr));
         // console.log("here", this.state.response);
-        // this.getLatAndLng(this.state.response);
+        this.getLatAndLng(this.state.response);
         
     }
-    // getLatAndLng(response){
-    //     if(Object.keys(response).length !== 0){
-    //         console.log(response);
+    getLatAndLng(response){
+        console.log("why",response);
+        if(Object.keys(response).length !== 0){
+            console.log("why",response);
 
-    //         var lat = response["data"][0]["geometry"]["lat"];
-    //         var lng = response["data"][0]["geometry"]["lng"];
-    //         console.log(lat, lng);
-    //     }
+            var lat = response["data"][0]["geometry"]["lat"];
+            var lng = response["data"][0]["geometry"]["lng"];
+            console.log(lat, lng);
+        }
 
-    //     // console.log(lat, lng);
-    // }
+        // console.log(lat, lng);
+    }
     componentDidMount (){
         var navbar = document.getElementById("nav");
         navbar.style.color = "black";
@@ -167,8 +179,8 @@ class SearchBar extends Component {
             />
         </div>
 
-        <div className="linkResults">
-            <Link id="resultsBtn" onClick={this.geocodeLocation("Los Angeles", "California")} to="/results">Generate Playlist! </Link>
+        <div className="linkResults" id="btnDiv">
+            <Link id="resultsBtn" to="/results">Generate Playlist! </Link>
         </div>
         
         

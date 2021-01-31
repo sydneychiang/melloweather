@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useState } from "react";
 import logo from './logo.svg';
 import './App.css';
 
@@ -19,28 +19,37 @@ import Results from "./Pages/Results";
 import NavBar from './Components/NavBar';
 import { AnimatePresence } from 'framer-motion'
 
-function App() {
-    const location = useLocation();
-    return (
-      <>
-      <NavBar />
-      <AnimatePresence exitBeforeEnter>
-      {/* <Router> */}
-        <Switch location= {location} key={location.key}>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/userLocation" component={CurrentLocation} />
-          <Route exact path="/enterLocation" component={EnterLocation} />
-          <Route exact path="/surpriseMe" component={SurpriseMe} />
-          <Route exact path="/results" component={Results} />
-          <Route exact path="/PageNotFound" component={PageNotFound} />
-          <Redirect to="/PageNotFound"/>
-        </Switch>
-      {/* </Router> */}
+function App({ data, sendDataToParent}){
+    
+  var location = useLocation();
+  var [user, setUser] = React.useState({Temp:'',Time:'',Playlist:'',userLocation:'',Temp:'',});
 
-      </AnimatePresence>
-      </>
-    )
+  function changeStatusInfo(e) {
+    setUser({...user, [e.target.name]:e.target.value})
   }
+  
+  return (
+    <>
+    <NavBar />
+    <AnimatePresence exitBeforeEnter>
+      <Switch location= {location} key={location.key}>
+        <Route exact path="/"> <Home/> </Route>
+        <Route exact path="/userLocation"> <CurrentLocation/> </Route>
+        <Route exact path="/enterLocation"> <EnterLocation/> </Route>
+        <Route exact path="/surpriseMe"> <SurpriseMe/></Route>
+        <Route exact path="/results"> 
+          <Results userLocation={user.UserLocation} temp={user.Temp} time={user.Time} playlist={user.Playlist} status={user.Status}/> 
+        </Route>
+
+
+        <Route exact path="/PageNotFound"> <PageNotFound/> </Route>
+        <Redirect to="/PageNotFound"/>
+      </Switch>
+
+    </AnimatePresence>
+    </>
+  )
+}
 
 export default App;
 

@@ -13,6 +13,8 @@
     "classnames": "^2.2.6",
     "dotenv": "^8.2.0",
     "framer-motion": "^3.2.2-rc.1",
+    "google-maps-react": "^2.0.6",
+    "jquery": "^3.5.1",
     "leaflet": "^1.7.1",
     "opencage-api-client": "^0.10.0",
     "react": "^17.0.1",

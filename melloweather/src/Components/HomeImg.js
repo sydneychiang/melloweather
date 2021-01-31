@@ -28,7 +28,7 @@ function HomeImg(){
     exit: {
       x: "-200vh",
       opacity: 0, 
-      transition: { ease: 'easeInOut', duration: 2, opacity: 0}
+      transition: { ease: 'easeInOut', duration: 1, opacity: 0}
     }
   }
 

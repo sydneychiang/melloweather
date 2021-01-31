@@ -17,26 +17,47 @@ class Results extends Component {
     }
     render(){
     return (
-        <motion.div className="resultsPanel" exit={{opacity: 0}}>
+        <motion.div className="resultsPanel" initial = {{opacity: 0}}
+          animate = {{opacity: 1}}
+          transition = {{ duration: 1.5}}
+          exit= {{opacity: 0, transition: { ease: 'easeInOut', duration: 2, opacity: 0}}}
+        >
         {/* <NavBar /> */}
-        <div id="location">
+        <motion.div id="location" initial = {{y:"-100vw"}}
+            animate = {{opacity: 1, y:"0"}} 
+            transition = {{ duration: 1.5}}
+            exit= {{y: '-100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 2, opacity: 0}}}
+            >
             <img id="locationPointer" src={locationPointer} alt=""/>
             Irvine, California
-        </div>
-        <div className="locationInfo">
+        </motion.div>
+        <motion.div className="locationInfo" initial = {{y:"-100vw"}}
+            animate = {{opacity: 1, y:"0"}} 
+            transition = {{ duration: 1.5}}
+            exit= {{y: '-100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 2, opacity: 0}}}
+            >
             <span id="temp" className="locationDetails">77ºF</span> | 
-            <span id="weatherType" className="locationDetails">Cloudy</span> | 
+            <span id="weatherType" className="locationDetails">{this.props.status}</span> | 
             <span id="time" className="locationDetails">11:59PM</span>
-          </div>
+          </motion.div>
 
 
 
-          <div id="dashboard">
-              <div id="embed"><iframe src="https://open.spotify.com/embed/playlist/4Ii5x4abUlfm8dCdZXvjYJ" width="400" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+          <motion.div id="dashboard" >
+            <motion.div id="embed" initial = {{x:"-100vw"}}
+          animate = {{opacity: 1, x:"0"}} 
+          transition = {{ duration: 1.5}}
+          exit= {{x: '-100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 2, opacity: 0}}}>
+              <iframe src="https://open.spotify.com/embed/playlist/4Ii5x4abUlfm8dCdZXvjYJ" width="400" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </motion.div>
 
-              <div id="blurb">Based on this location's weather,
-              here is a playlist tailored for you to match the atmosphere.</div>
-          </div>
+            <motion.div id="blurb" initial = {{x:"100vw"}}
+            animate = {{opacity: 1, x:"0"}} 
+            transition = {{ duration: 1.5}}
+            exit= {{x: '100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 2, opacity: 0}}}
+          > Based on this location's weather,
+              here is a playlist tailored for you to match the atmosphere.</motion.div>
+            </motion.div>
         
       </motion.div>
   

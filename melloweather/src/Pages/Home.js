@@ -4,7 +4,8 @@ import RightBar from '../Components/RightBar.js';
 import CurrentLocation from './CurrentLocation.js';
 import './Home.css';
 import React, {Component} from "react";
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+
 
 class Home extends Component {
   constructor(props){
@@ -23,7 +24,7 @@ class Home extends Component {
       exit: {
         x: "-200vh",
         opacity: 0,
-        transition: { ease: 'easeInOut', duration: 2, opacity: 0}
+        transition: { ease: 'easeInOut', duration: 1, opacity: 0}
     }
   }
   } 
@@ -35,7 +36,6 @@ class Home extends Component {
   render(){
   return (
     <motion.div className="panel" >
-      
       <div className="flex-container">
         <motion.div class="homeText" variants={this.containerVariants}
           initial="hidden"

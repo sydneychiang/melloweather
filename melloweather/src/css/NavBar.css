@@ -47,3 +47,17 @@ Link{
 
 
 }
+
+
+#signIn{
+    float: right;
+}
+
+
+#login{
+
+}
+
+#logout{
+    display: none;
+}

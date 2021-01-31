@@ -5,15 +5,6 @@ import { Link } from 'react-router-dom';
 import { motion} from 'framer-motion'
 
 function RightBar() {
-    // function handleClick(){
-    //     let textPanel = document.getElementsByClassName("textPanel")[0];
-    //     // textPanel.classList.toggle("fade");
-
-    //     let offScreen = document.getElementsByClassName("offScreen")[0];
-    //     offScreen.classList.toggle("offScreen");
-    //     offScreen.classList.toggle("onScreen");
-    // }
-
     const containerVariants = {
       hidden: {
         x: 0,
@@ -26,7 +17,7 @@ function RightBar() {
       },
       exit: {
         opacity: 0, 
-        transition: { ease: 'easeInOut', duration: 1.5, opacity: 0}
+        transition: { ease: 'easeInOut', duration: .5, opacity: 0}
       }
     }
 

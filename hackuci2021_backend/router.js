@@ -10,8 +10,8 @@ router.route("/refreshtoken").get(controller.refreshToken)
 router.route("/logout").get(controller.logout)
 router.route("/getPlaylist").get(controller.getPlaylist)
 router.route("/getTopArtists").get(controller.getTopArtists)
-router.route("/getWeatherCoords").get(controller.getWeatherCoords)
-router.route("/getWeatherLoc").get(controller.getWeatherLoc)
+router.route("/getWeather").get(controller.getWeather)
+
 // getPlaylist?key=value&key=value&key=value
 
 

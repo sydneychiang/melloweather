@@ -156,7 +156,7 @@ exports.getTopArtists = async (req, res, next) => {
   }
 }
 
-exports.getWeatherCoords = async (req, res, next) => {
+exports.getWeather = async (req, res, next) => {
   
   let woeid;
   try {
@@ -173,15 +173,18 @@ exports.getWeatherCoords = async (req, res, next) => {
       })
   };
 
-exports.getWeatherLoc = async (req, res, next) => {
-
-}
-  
-  fetch(`https://www.metaweather.com/api/location/${woeid}/`)
+  let weather_state;
+  await fetch(`https://www.metaweather.com/api/location/${woeid}/`)
   .then(response => response.json())
   .then(data => {
-    console.log(data.consolidated_weather[0].weather_state_name);
+    weather_state = data.consolidated_weather[0].weather_state_name;
+    console.log(weather_state);
   })
+
+  if (weather_state == "Showers" ||
+      weather_state == "Light Rain") {
+        console.log("sad boi");
+  }
 }
 
 exports.logout = async (req, res, next) => {

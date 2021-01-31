@@ -12,11 +12,36 @@
     margin-top: 4vh;
     padding: 17px;
     width: 200px;
-    background: rgba(0,19,73,0.5);
+    
     border-radius: 17px;
 }
 
 .resultsBtn{
+    color: white;
+    font-size: 20px;
+}
+
+#resultsBtnId {
+    visibility: hidden;
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    background: #FF8391
+}
+
+#generateBtnId {
+    visibility: visible;
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    background: rgba(0,19,73,0.5);
+}
+
+.generateBtn{
     color: white;
     font-size: 20px;
 }

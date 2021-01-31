@@ -275,7 +275,7 @@ exports.getWeather = async (req, res, next) => {
     await fetch(`https://www.metaweather.com/api/location/${woeid}/`)
     .then(response => response.json())
     .then(data => {
-      temp = data.consolidated_weather[0].the_temp * (9/5) + 32;
+      temp = Math.round(data.consolidated_weather[0].the_temp * (9/5) + 32);
       weather_state = data.consolidated_weather[0].weather_state_name;
       time = data.time.split("T")[1].substring(0, 5);
     

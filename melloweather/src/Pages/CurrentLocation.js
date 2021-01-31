@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import AskLocation from "../Components/AskLocation";
 import NavBar from "../Components/NavBar";
@@ -14,8 +14,14 @@ class CurrentLocation extends Component{
     }
 
     onTrigger = (event) => {
-        console.log("this.data")
         this.props.parentCallback(this.data);
+        var generate_btn = document.getElementById("generateBtnId")
+        generate_btn.style.visibility = "hidden"
+        console.log(generate_btn)
+    
+        var results_btn = document.getElementById("resultsBtnId")
+        results_btn.style.visibility = "visible"
+        console.log(results_btn)
         
         event.preventDefault();
       }
@@ -51,7 +57,8 @@ class CurrentLocation extends Component{
             this.data = res.data;
         })
     }
-    render(){
+
+    render() {
       return (
         <motion.div className="currentLocationPanel offScreen" initial = {{opacity: 0}}
                 animate = {{opacity: 1}}
@@ -65,15 +72,23 @@ class CurrentLocation extends Component{
             >
                 Please Click Allow Location!
             </motion.div>
-            <motion.div className="linkResults" initial = {{y:"-100vw"}}
-            animate = {{opacity: 1, y:"0"}} 
-            transition = {{ duration: 1}}
-            exit= {{y: '-100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 1, opacity: 0}}}
-            >
-                <button onClick={this.onTrigger}>Click Me First</button>
-                <Link className="resultsBtn" to="/results">Generate Playlist! </Link>
-            </motion.div>
-        </motion.div>
+            <motion.div className="linkResults" id="generateBtnId" initial = {{opacity:0}}
+        animate = {{opacity: 1, y:"0"}} 
+        transition = {{ duration: .5, delay: 3}}
+        exit= {{x: '-100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 1, opacity: 0}}}
+      >
+          <Link className="generateBtn"  onClick={this.onTrigger}>Make Your Playlist! </Link>
+          </motion.div>
+
+
+          <motion.div className="linkResults" id="resultsBtnId" initial = {{x:"0", opacity: 0}}
+        animate = {{opacity: 1, x:"0"}} 
+        transition = {{ duration: 1, delay: 3}}
+        exit= {{x: '-100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 1, opacity: 0}}}
+      >
+          <Link className="resultsBtn"  to= "/results">See Your Playlist! </Link>
+          </motion.div>
+    </motion.div>
       );
     }
 }

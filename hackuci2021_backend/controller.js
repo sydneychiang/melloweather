@@ -1,10 +1,12 @@
 const request = require("request")
 const querystring = require("querystring")
 const dotenv = require("dotenv");
+const fetch = require("node-fetch");
 var path = require("path");
 var SpotifyWebApi = require('spotify-web-api-node');
 
 dotenv.config({ path: "./config.env" });
+
 
 var spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
@@ -152,6 +154,34 @@ exports.getTopArtists = async (req, res, next) => {
       message: err
       });
   }
+}
+
+exports.getWeatherCoords = async (req, res, next) => {
+  
+  let woeid;
+  try {
+    await fetch(`https://www.metaweather.com/api/location/search/?lattlong=36.96,-122.02`)
+    .then(response => response.json())
+    .then(data => {
+      woeid = data[0].woeid;
+      console.log(woeid);
+      });
+  } catch (err) {
+    res.status(404).json({
+      status: "ERROR",
+      message: err
+      })
+  };
+
+exports.getWeatherLoc = async (req, res, next) => {
+
+}
+  
+  fetch(`https://www.metaweather.com/api/location/${woeid}/`)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.consolidated_weather[0].weather_state_name);
+  })
 }
 
 exports.logout = async (req, res, next) => {

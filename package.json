@@ -20,7 +20,7 @@
     "start": "nodemon app.js",
     "frontend": "cd melloweather && npm start",
     "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run frontend\"",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "cd melloweather && npm install && npm run build"
   },
   "author": "",
   "license": "ISC"

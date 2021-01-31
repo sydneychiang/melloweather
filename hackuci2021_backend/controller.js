@@ -160,7 +160,7 @@ exports.getWeather = async (req, res, next) => {
   
   let woeid;
   try {
-    await fetch(`https://www.metaweather.com/api/location/search/?lattlong=36.96,-122.02`)
+    await fetch(`https://www.metaweather.com/api/location/search/?lattlong=${req.query.latitude},${req.query.longitude}`)
     .then(response => response.json())
     .then(data => {
       woeid = data[0].woeid;
@@ -181,10 +181,49 @@ exports.getWeather = async (req, res, next) => {
     console.log(weather_state);
   })
 
-  if (weather_state == "Showers" ||
-      weather_state == "Light Rain") {
-        console.log("sad boi");
+  let min_valence;
+  let max_valence;
+
+  if (weather_state == "Showers" || weather_state == "Heavy Rain") {
+    min_valence = 0.1;
+    max_valence = 0.3;
   }
+
+  if (weather_state == "Thunderstorm") {
+    min_valence = 0.2;
+    min_valence = 0.5
+  }
+
+  if (weather_state == "Clear") {
+    min_valence = 0.8;
+    max_valence = 1.0;
+  }
+
+  if (weather_state = "Light Cloud") {
+    min_valence = 0.7;
+    max_valence = 0.9;
+  }
+
+  if (weather_state == "Sleet" || weather_state == "Hail") {
+    min_valence = 0.2;
+    max_valence = 0.4
+  } 
+
+  if (weather_state == "Heavy Cloud" || weather_state == "Snow") {
+    min_valence = 0.4;
+    max_valence = 0.6;
+  }
+  
+  if (weather_state = "Light Rain") {
+    min_valence = 0.3;
+    max_valence = 0.5;
+  }
+  
+  res.status(200).json({
+    "weather": weather_state,
+    "min_valence": min_valence,
+    "max_valence": max_valence
+  });
 }
 
 exports.logout = async (req, res, next) => {

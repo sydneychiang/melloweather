@@ -35,14 +35,20 @@ class App extends Component{
       time: "00:00",
       playlist: "",
       status: "wet",
+      userLocation: "",
+
     }
     
   }
 
   handleCallback = (childData) => {
-    console.log(childData)
-    this.status = childData
-    console.log(this.status)
+    console.log(childData);
+    this.playlist = childData["playlist_id"];
+    this.temp = childData["temperature"]
+    this.status = childData["weather_state"]
+    this.time = childData["time"]
+    this.userLocation = childData["location"]
+    console.log(this.playlist)
   }
 
   render(){
@@ -53,7 +59,7 @@ class App extends Component{
     <AnimatePresence exitBeforeEnter>
       <Switch location= {location} key={location.key}>
         <Route exact path="/"> <Home/> </Route>
-        <Route exact path="/userLocation"> <CurrentLocation/> </Route>
+        <Route exact path="/userLocation"> <CurrentLocation parentCallback = {this.handleCallback}/> </Route>
         <Route exact path="/enterLocation"> <EnterLocation/> </Route>
         <Route exact path="/surpriseMe"> <SurpriseMe parentCallback = {this.handleCallback} /></Route>
         <Route exact path="/results"> 

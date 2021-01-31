@@ -10,12 +10,14 @@ class SurpriseMe extends Component {
   constructor(props){
     super(props);
     this.state = {
+      data: null
     };
   } 
 
   onTrigger = (event) => {
-    this.props.parentCallback("Data from child");
-    console.log("I TRIED TO SEND")
+    console.log("this.data")
+    this.props.parentCallback(this.data);
+    
     event.preventDefault();
   }
    
@@ -29,6 +31,7 @@ class SurpriseMe extends Component {
     Axios.get(url).then(res => {
       const data = res.data;
       console.log(data)
+      this.data = data
     })
   }
   render(){

@@ -337,11 +337,6 @@ exports.getWeather = async (req, res, next) => {
     min_valence = 0.8;
     max_valence = 1.0;
   }
-<<<<<<< HEAD
-  
-  console.log(location, weather_state, temp, time, country, region_code, min_valence, max_valence)
-=======
->>>>>>> 12a01840c7c077caddaf22868359bd17ea3108bf
 
   res.status(200).json({
     "location": location,

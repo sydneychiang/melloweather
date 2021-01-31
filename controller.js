@@ -12,7 +12,7 @@ var geo_key = process.env.GEO_KEY;
 var spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  redirectUri: process.env.REDIRECT_URI || "http://localhost:8080/callback"
+  redirectUri: process.env.REDIRECT_URI || "https://melloweather.herokuapp.com/callback"
 });
 
 var scopes = ['user-read-private', 'user-read-email', 'playlist-modify-public', 'playlist-modify-private', 'user-top-read'];

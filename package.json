@@ -17,7 +17,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "frontend": "cd melloweather && npm start",
+    "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run frontend\"",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "author": "",
   "license": "ISC"

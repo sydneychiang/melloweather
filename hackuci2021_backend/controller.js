@@ -306,7 +306,7 @@ exports.getWeather = async (req, res, next) => {
     max_valence = 1.0;
   }
 
-  if (weather_state = "Light Cloud") {
+  if (weather_state == "Light Cloud") {
     min_valence = 0.7;
     max_valence = 0.9;
   }
@@ -321,9 +321,15 @@ exports.getWeather = async (req, res, next) => {
     max_valence = 0.6;
   }
   
-  if (weather_state = "Light Rain") {
+  if (weather_state == "Light Rain") {
     min_valence = 0.3;
     max_valence = 0.5;
+  }
+
+  if (weather_state === undefined ) {
+    weather_state = "Clear";
+    min_valence = 0.8;
+    max_valence = 1.0;
   }
   
   res.status(200).json({

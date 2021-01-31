@@ -1,0 +1,69 @@
+
+.resultsPanel{
+    height: 100vh;
+    width: 100vw;
+    background: #272625;
+    padding-top: 17vh;
+    color: #FAF7F5;
+    text-align: center;
+}
+
+
+#blurb{
+    font-size: 35px;
+    text-align: left;
+    /* height: 380px;
+    width: 300px; */
+    width: 480px;
+    height: 100%;
+    margin-left: 2px;
+    display: inline-block;
+}
+
+#embed{
+    /* width: 300px;
+    height: 380px; */
+    height: 100%;
+    background: #FAF7F5;
+    color: black;
+    display: inline-block;
+}
+
+
+#location{
+    font-size: 80px;
+    color: #B8D9D4;
+}
+
+.locationInfo{
+    font-size: 30px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+}
+
+
+#locationPointer{
+    height: 80px;
+    
+}
+
+
+.locationDetails{
+    margin-left: 1em;
+    margin-right: 1em;
+
+}
+
+
+#dashboard{
+    margin-top: 1vw;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+}
+
+#dashboard div {
+    margin-left: 1vw;
+    margin-right: 1vw
+}

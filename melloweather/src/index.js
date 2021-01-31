@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Home from './Home/Home.js';
+import Home from './Pages/Home.js';
+import CurrentLocation from './Pages/CurrentLocation';
+import { BrowserRouter as Router} from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <Router>
+      <App />
+    </Router>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

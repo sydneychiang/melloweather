@@ -11,6 +11,23 @@
 }
 
 
+Link{
+    cursor: pointer;
+    opacity: 30%;
+    font-family: "Rubik";
+    font-weight: 400;
+    font-size: 2em;
+    margin-left: 1vw;
+    position: relative;
+    top: 50%;
+    text-decoration: none;
+    color: black;
+}
+
+.title:visited{
+    color: black;
+}
+
 .logoImg{
     margin-left: 3vw;
     height: 45px;
@@ -26,5 +43,7 @@
     margin-left: 1vw;
     position: relative;
     top: 50%;
+    text-decoration: none;
+
 
 }

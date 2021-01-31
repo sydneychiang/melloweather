@@ -3,7 +3,7 @@
 
 .fullPanel{
     background-color: #99C9C2;
-    height: 100vh;
+    height: 68vh;
     border: none;
     font-family: "Karla";
     font-weight: 400;
@@ -11,19 +11,26 @@
     text-align: right;
     margin: 0px !important;
     padding: 3vw;
+    padding-bottom: 0vw;
     position: absolute;
     z-index: 1;
     right: 0;
     padding-top: 32vh;
-
-
+    box-shadow: -6px 0px 9px rgba(0,0,0,0.15);
+    /* transition: color 1s ease-in-out; */
 
 }
+
+.fade{
+    color: #99C9C2;
+
+}
+
 
 .link{
     margin-top: 5vh;
     margin-bottom: 5vh;
     display: block;
-
-
+    text-decoration: none;
+    color: black;
 }

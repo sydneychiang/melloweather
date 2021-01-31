@@ -61,14 +61,14 @@ exports.getPlaylist = async (req, res, next) => {
     let new_playlist_id;
     let new_playlist_url;
     try {
-      await fetch(`http://localhost:8080/getWeather?latitude=${req.query.latitude}&longitude=${req.query.longitude}`)
+      await fetch(`/getWeather?latitude=${req.query.latitude}&longitude=${req.query.longitude}`)
       .then(response => response.json())
       .then(data => {
         weather_info = data;
         console.log(weather_info);
       });
       
-      await fetch(`http://localhost:8080/getTopArtists`)
+      await fetch(`/getTopArtists`)
       .then(response => response.json())
       .then(data => {
         top_artists = data;

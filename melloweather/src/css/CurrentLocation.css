@@ -74,3 +74,8 @@
 a:-webkit-any-link{
     text-decoration: none;
 }
+
+Link{
+    cursor: pointer;
+    opacity: 30%;
+}

@@ -43,3 +43,8 @@
     margin-bottom: 5vh;
     display:block; */
 }
+
+Link{
+    cursor: pointer;
+    opacity: 30%;
+}

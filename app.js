@@ -21,9 +21,9 @@ app.use(cookieParser());
 
 app.use("/", router);  
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname + '/../melloweather/build/'))
-// })
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../melloweather/build/index.html'))
+})
 
 app.listen(port, function() {
     console.log(`App running on port ${port}...`);

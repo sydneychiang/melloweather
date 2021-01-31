@@ -178,7 +178,7 @@ exports.callback = async (req, res, next) => {
       spotifyApi.setAccessToken(access_token);
       spotifyApi.setRefreshToken(refresh_token);
 
-      res.redirect('http://localhost:8080');
+      res.redirect('https://melloweather.herokuapp.com');
     } catch(err) {
       res.redirect('/#/error/invalid token');
     }
